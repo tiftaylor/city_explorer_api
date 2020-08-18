@@ -32,14 +32,8 @@ app.get('/weather', weatherInfo);
 function weatherInfo(request, response){
   const jsonObj = require('./data/weather.json');
   const dataArray = jsonObj.data;
-  const newArray = [];
 
-  dataArray.forEach(objInArray => {
-    const newDay = new Weather(objInArray);
-    newArray.push(newDay);
-  });
-
-  response.send(newArray);
+  response.send(dataArray.map(objInArray => new Weather(objInArray)));
 }
 
 
