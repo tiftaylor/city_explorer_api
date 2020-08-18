@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
 **Author**: Tif Taylor  
-**Version**: 1.0.0  
+**Version**: 2.1.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -19,7 +19,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
-08-18-2020 ??pm - Refactored the loop to .map() for weather
+08-18-2020 3:05pm - Refactored get location with API call
+08-18-2020 2:30pm - Refactored the loop to .map() for weather
 08-17-2020 6:12pm - Deployed Location, Weather, and Error handling for "lynwood" in the app
 08-17-2020 4:05pm - GitHub Repo Established 
 
@@ -52,4 +53,9 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Number and Name of Feature: #1 Lab 7 | Refactor Weather Loop   
 >Estimated time to complete: 30 minutes      
 >Start time: 2:30 PM | End time: 2:35 PM      
->Actual time needed to complete: 5 minutes  
+>Actual time needed to complete: 5 minutes 
+
+>Number and Name of Feature: #2 Lab 7 | Location API   
+>Estimated time to complete: 1 hour       
+>Start time: 2:45 PM | End time: 3:05 PM        
+>Actual time needed to complete: 20 minutes   
