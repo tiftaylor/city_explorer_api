@@ -19,6 +19,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
+08-18-2020 ??pm - Refactored the loop to .map() for weather
 08-17-2020 6:12pm - Deployed Location, Weather, and Error handling for "lynwood" in the app
 08-17-2020 4:05pm - GitHub Repo Established 
 
@@ -47,3 +48,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Estimated time to complete: 1 hour    
 >Start time: 6:00 PM | End time: 6:15 PM    
 >Actual time needed to complete: 15 minutes
+
+>Number and Name of Feature: #1 Lab 7 | Refactor Weather Loop   
+>Estimated time to complete: 30 minutes      
+>Start time: 2:30 PM | End time: 2:35 PM      
+>Actual time needed to complete: 5 minutes  
