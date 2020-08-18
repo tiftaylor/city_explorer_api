@@ -22,6 +22,22 @@ app.get('/location', (request, response) => {
 })
 
 
+app.get('/weather', weatherInfo);
+
+function weatherInfo(request, response){
+  const jsonObj = require('./data/weather.json');
+  const dataArray = jsonObj.data;
+  const newArray = [];
+
+  dataArray.forEach(objInArray => {
+    const newDay = new Weather(objInArray);
+    newArray.push(newDay);
+  });
+
+  response.send(newArray);
+}
+
+
 // =================== Misc. Functions ===================== //
 
 function Location(jsonObject) {
@@ -32,6 +48,10 @@ function Location(jsonObject) {
 }
 
 
+function Weather(jsonObj){
+  this.forecast = jsonObj.weather.description;
+  this.time = jsonObj.valid_date;
+}
 
 // =================== Start Server ===================== //
 app.listen(PORT, () => console.log('Ay! You connected!'));
