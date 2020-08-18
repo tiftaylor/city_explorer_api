@@ -18,6 +18,11 @@ app.get('/location', (request, response) => {
   const jsonObject = require('./data/location.json');
   const constructorLocation = new Location(jsonObject);
 
+  // handle wrong city error
+  if(request.query.city !== 'lynwood'){
+    return response.status(500).send('You can only search for lynwood (with a lowercase l');
+  };
+
   response.send(constructorLocation);
 })
 

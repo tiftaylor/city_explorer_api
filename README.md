@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
-**Author**: Tif Taylor
-**Version**: 1.0.0
+**Author**: Tif Taylor  
+**Version**: 1.0.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -19,22 +19,31 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
-08-17-2020 ??pm - GitHub Repo Established 
-<!-- Here's an examples:
-01-01-2020 5:00pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+08-17-2020 6:12pm - Deployed Location, Weather, and Error handling for "lynwood" in the app
+08-17-2020 4:05pm - GitHub Repo Established 
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-
+- Class 06 CF Demo Lecture [code](https://github.com/codefellows/seattle-301d65/blob/master/class-06/demos/server/server.js) helped guide me on the Lab06 code submitted
 
 ## User Acceptence Time Estimate Tests
 
->Number and Name of Feature: #1 | Set Up GitHub Repo & Deploy on Heroku
->Estimated time to complete: 30 Minutes    
+>Number and Name of Feature: #1 | Set Up GitHub Repo & Deploy on Heroku  
+>Estimated time to complete: 30 minutes    
 >Start time: 2:45 PM | End time: 4:05 PM    
 >Actual time needed to complete: 1 hour 20 minutes  
 
 >Number and Name of Feature: #2 | Set up Locations Feature   
->Estimated time to complete: 1.5 Hours    
->Start time: 4:10 PM | End time: ?? PM    
->Actual time needed to complete: ??  
+>Estimated time to complete: 1.5 hours    
+>Start time: 4:10 PM | End time: 5:10 PM    
+>Actual time needed to complete: 1 hour  
+
+>Number and Name of Feature: #3 | Set up Weather Feature     
+>Estimated time to complete: 1 hour      
+>Start time: 5:30 PM | End time: 5:50 PM      
+>Actual time needed to complete: 20 minutes  
+
+>Number and Name of Feature: #4 | Capature Errors  
+>Estimated time to complete: 1 hour    
+>Start time: 6:00 PM | End time: 6:15 PM    
+>Actual time needed to complete: 15 minutes
