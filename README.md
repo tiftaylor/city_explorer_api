@@ -2,6 +2,8 @@
 
 **Author**: Tif Taylor
 **Version**: 1.0.0
+**Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
+
 
 ## Overview
 For Code Fellows 301 Week 2, we are working on creating individual back-end applications that can be plugged into a ready-made front-end application called City Explorer. This is an application designed to be able to input the name of a city and the application will send back an image of a map using the coordinates of that city as well as 4 informational boxes below the map image pertaining to information specifically from that city like Weather, Yelp results, Movies with the city name, and potential Hikes using APIs. 
@@ -27,7 +29,12 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 ## User Acceptence Time Estimate Tests
 
->Number and Name of Feature: #1 | Repository Set Up
->Estimated time to complete: 30 Minutes
->Start time: 2:40 PM | End time: 5:40 PM
->Actual time needed to complete: 25 Minutes
+>Number and Name of Feature: #1 | Set Up GitHub Repo & Deploy on Heroku
+>Estimated time to complete: 30 Minutes    
+>Start time: 2:45 PM | End time: 4:05 PM    
+>Actual time needed to complete: 1 hour 20 minutes  
+
+>Number and Name of Feature: #2 | Set up Locations Feature   
+>Estimated time to complete: 1.5 Hours    
+>Start time: 4:10 PM | End time: ?? PM    
+>Actual time needed to complete: ??  
