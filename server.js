@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
 
 // =================== Routes ===================== //
@@ -36,10 +37,15 @@ app.get('/location', (request, response) => {
 app.get('/weather', weatherInfo);
 
 function weatherInfo(request, response){
-  const jsonObj = require('./data/weather.json');
-  const dataArray = jsonObj.data;
+  const latData = request.query.latitude;
+  const lonData = request.query.longitude;
+  const weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${latData}&lon=${latData}&key=${WEATHER_API_KEY}`
 
-  response.send(dataArray.map(objInArray => new Weather(objInArray)));
+  superagent.get(weatherURL)
+    .then(resultData => {
+      const objectFromBody = resultData.body;
+      response.send(objectFromBody.data.map(objInArray => new Weather(objInArray)));
+    });
 }
 
 
