@@ -3,18 +3,24 @@
 // =================== Packages ===================== //
 const express = require('express');
 const superagent = require('superagent');
+const pg = require('pg');
 const cors = require('cors');
 const { json } = require('express');
 require('dotenv').config();
 
 
+
 // =================== Global Variables ===================== //
 const PORT = process.env.PORT || 3001;
 const app = express();
-app.use(cors());
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
+
+// ========== Express Configs ============//
+app.use(cors());
+const client = new pg.Client(DATABASE_URL);
+client.on('error', (error) => console.error(error));
 
 
 // ========================== Routes ============================ //
@@ -29,8 +35,12 @@ app.get('/location', (request, response) => {
       const constructorLocation = new Location(resultArrayFromBody, queryFromInput);
       response.send(constructorLocation);
     })
-    // .catch(handleError);
+    .catch(error => {
+      console.log(error);
+      response.status(500).send(error.message);
+    });
 });
+
 
 // ============= weather api route ================ //
 app.get('/weather', weatherInfo);
@@ -45,8 +55,12 @@ function weatherInfo(request, response){
       const objectFromBody = resultData.body;
       response.send(objectFromBody.data.map(objInArray => new Weather(objInArray)));
     })
-    // .catch(handleError);
+    .catch(error => {
+      console.log(error);
+      response.status(500).send(error.message);
+    });
 };
+
 
 // ============= trails api route ================ //
 app.get('/trails', trailInfo);
@@ -63,7 +77,10 @@ function trailInfo(request, response){
       console.log(arrayFromBody);
       response.send(arrayFromBody.map(objInArray => new Trail(objInArray)));
     })
-    // .catch(handleError);
+    .catch(error => {
+      console.log(error);
+      response.status(500).send(error.message);
+    });
 };
 
 
@@ -96,8 +113,10 @@ function Trail(jsonObj){
 }
 
 
-// const handleError = (error) => response.status(500).send(error.message);
-
-
 // =================== Start Server ===================== //
-app.listen(PORT, () => console.log('Ay! You connected!'));
+client.connect()
+  .then( () => {
+    app.listen(PORT, () => console.log('Ay! You connected!'));
+  });
+
+;
