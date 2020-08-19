@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
 **Author**: Tif Taylor  
-**Version**: 2.3.0  
+**Version**: 2.4.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -19,6 +19,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
+08-18-2020 5:01pm - Created Trails constructor and get API
 08-18-2020 3:35pm - Refactored get weather with API call
 08-18-2020 3:05pm - Refactored get location with API call
 08-18-2020 2:30pm - Refactored the loop to .map() for weather
@@ -28,6 +29,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 - Class 06 CF Demo Lecture [code](https://github.com/codefellows/seattle-301d65/blob/master/class-06/demos/server/server.js) helped guide me on the Lab06 code submitted
+- Collaborated with classmate Jack Nelson regarding the split for date and time in the trails constructor
 
 ## User Acceptence Time Estimate Tests
 
@@ -65,3 +67,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Estimated time to complete: 30 minutes         
 >Start time: 3:15 PM | End time: 3:35 PM          
 >Actual time needed to complete: 20 minutes  
+
+>Number and Name of Feature: #4 Lab 7 | Trails API     
+>Estimated time to complete: 30 minutes         
+>Start time: 3:45 PM | End time: 5:01 PM          
+>Actual time needed to complete: 1 hour 15 minutes
