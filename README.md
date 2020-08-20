@@ -13,13 +13,15 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 - Create the server
 - Deploy the site somewhere, like Heroku
 - Use that link on the main [City Explorer](https://codefellows.github.io/code-301-guide/curriculum/city-explorer-app/front-end/) website to run your back end on their front end.
+- Here is a list of the API Documenation sites used: [LocationIQ](https://locationiq.com/docs#forward-geocoding), [Weatherbit](https://www.weatherbit.io/api), [Hiking](https://www.hikingproject.com/data), [TheMovieDB](https://developers.themoviedb.org/3/getting-started/introduction), [Yelp](https://www.yelp.com/developers/documentation/v3/get_started)  
+
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
 
 ## Change Log
-08-20-2020 ??pm - Partial refactor to server.js + Added Movies API/Constructor
+08-20-2020 4:30pm - Partial refactor to server.js + Added Movies API/Constructor  
 08-19-2020 6:00pm - Deploy Database to Heroku    
 08-19-2020 5:40pm - Code in JS to check DB    
 08-19-2020 3:05pm - Setup and Create Database  
@@ -92,7 +94,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Start time: 5:45 PM | End time: 6:00 PM                      
 >Actual time needed to complete: 15 minutes   
 
->Number and Name of Feature: #1 Lab 9 | Add Movies API         
->Estimated time to complete: 1 hour                    
->Start time: ?? PM | End time: ?? PM                      
->Actual time needed to complete: ??
+>Number and Name of Feature: #1 Lab 9 | Add Movies API           
+>Estimated time to complete: 1 hour                      
+>Start time: 3:00 PM | End time: 4:30 PM                        
+>Actual time needed to complete: 1 hour 30 minutes  

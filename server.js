@@ -15,6 +15,7 @@ const app = express();
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
+const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
 const DATABASE_URL = process.env.DATABASE_URL;
 
 
@@ -28,6 +29,7 @@ client.on('error', (error) => console.error(error));
 app.get('/location', getLocation);
 app.get('/weather', weatherInfo);
 app.get('/trails', trailInfo);
+app.get('/movies', moviesInfo);
 
 
 // ========================== Route Handlers ============================ //
@@ -98,6 +100,23 @@ function trailInfo(request, response){
 };
 
 
+function moviesInfo(request, response){
+  
+  const query = request.query.search_query;
+  const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+
+  superagent.get(movieURL)
+    .then(resultData => {
+      const resultArray = resultData.body.results;
+      response.send(resultArray.map(objInArray => new Movie(objInArray)));
+    })
+    .catch(error => {
+      console.log(error);
+      response.status(500).send(error.message);
+    });
+};
+
+
 // =================== Misc. Functions ===================== //
 function Location(jsonObject, query) {
   this.search_query = query;
@@ -127,7 +146,15 @@ function Trail(jsonObj){
 }
 
 
-
+function Movie(obj) {
+  this.title = obj.original_title;
+  this.overview = obj.overview;
+  this.average_votes = obj.vote_average;
+  this.total_votes = obj.vote_count;
+  this.image_url = obj.poster_path;
+  this.popularity = obj.popularity;
+  this.released_on = obj.release_date;
+}
 
 
 // =================== Start Server ===================== //
