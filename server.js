@@ -9,7 +9,6 @@ const { json } = require('express');
 require('dotenv').config();
 
 
-
 // =================== Global Variables ===================== //
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -18,27 +17,29 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const DATABASE_URL = process.env.DATABASE_URL;
 
-// ========== Express Configs ============//
+
+// ================= Express Configs ====================//
 app.use(cors());
 const client = new pg.Client(DATABASE_URL);
 client.on('error', (error) => console.error(error));
 
 
-// ========================== Routes ============================ //
-// ============= location api route ================ //
-app.get('/location', (request, response) => {
+// ===================== Routes ======================= //
+app.get('/location', getLocation);
+app.get('/weather', weatherInfo);
+app.get('/trails', trailInfo);
+
+
+// ========================== Route Handlers ============================ //
+function getLocation (request, response) {
   const queryFromInput = request.query.city;
-  
-  client.query('SELECT search_query FROM locations')
-    .then(resultFromSql => {
-      const valuesOfArray = resultFromSql.rows.map(obj => obj.search_query);
 
-      if (valuesOfArray.includes(queryFromInput)) {
-        client.query(`SELECT * FROM locations WHERE search_query = '${queryFromInput}'`)
-          .then (theCityData => {
-            response.send(theCityData.rows[0]);
-          })
+  client.query(`SELECT * FROM locations WHERE search_query = '${queryFromInput}'`)
+    .then (theCityData => {
 
+      if(theCityData.rowCount === 1){
+        console.log('Retrieved result from db');
+        response.send(theCityData.rows[0]);
       } else {
         const dynamicURL = `https://us1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${queryFromInput}&format=json`;
 
@@ -50,24 +51,18 @@ app.get('/location', (request, response) => {
 
             client.query(insertString, valueArray)
               .then( () => {
-                
-                client.query(`SELECT * FROM locations WHERE search_query = '${queryFromInput}'`)
-                  .then (theCityData => {
-                    response.send(theCityData.rows[0]);
-                  })
-              })
-          })
+                console.log('Added location to db');
+                response.send(new Location(resultArrayFromBody, queryFromInput));
+              });
+          });
       }
     })
     .catch(error => {
       console.log(error);
       response.status(500).send(error.message);
     });
-});
+};
 
-
-// ============= weather api route ================ //
-app.get('/weather', weatherInfo);
 
 function weatherInfo(request, response){
   const latData = request.query.latitude;
@@ -85,9 +80,6 @@ function weatherInfo(request, response){
     });
 };
 
-
-// ============= trails api route ================ //
-app.get('/trails', trailInfo);
 
 function trailInfo(request, response){
   const latData = request.query.latitude;
@@ -133,6 +125,9 @@ function Trail(jsonObj){
   this.condition_date = jsonObj.conditionDate.split(' ')[0];
   this.condition_time = jsonObj.conditionDate.split(' ')[1];
 }
+
+
+
 
 
 // =================== Start Server ===================== //
