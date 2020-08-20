@@ -16,6 +16,7 @@ const app = express();
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 // ========== Express Configs ============//
 app.use(cors());
@@ -27,13 +28,36 @@ client.on('error', (error) => console.error(error));
 // ============= location api route ================ //
 app.get('/location', (request, response) => {
   const queryFromInput = request.query.city;
-  const dynamicURL = `https://us1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${queryFromInput}&format=json`;
+  
+  client.query('SELECT search_query FROM locations')
+    .then(resultFromSql => {
+      const valuesOfArray = resultFromSql.rows.map(obj => obj.search_query);
 
-  superagent.get(dynamicURL)
-    .then(resultData => {
-      const resultArrayFromBody = resultData.body;
-      const constructorLocation = new Location(resultArrayFromBody, queryFromInput);
-      response.send(constructorLocation);
+      if (valuesOfArray.includes(queryFromInput)) {
+        client.query(`SELECT * FROM locations WHERE search_query = '${queryFromInput}'`)
+          .then (theCityData => {
+            response.send(theCityData.rows[0]);
+          })
+
+      } else {
+        const dynamicURL = `https://us1.locationiq.com/v1/search.php?key=${GEOCODE_API_KEY}&q=${queryFromInput}&format=json`;
+
+        superagent.get(dynamicURL)
+          .then(resultData => {
+            const resultArrayFromBody = resultData.body;
+            const insertString = 'INSERT INTO locations (search_query, formatted_query, latitude, longitude) VALUES ($1, $2, $3, $4)';
+            const valueArray = [queryFromInput, resultArrayFromBody[0].display_name, resultArrayFromBody[0].lat,resultArrayFromBody[0].lon];
+
+            client.query(insertString, valueArray)
+              .then( () => {
+                
+                client.query(`SELECT * FROM locations WHERE search_query = '${queryFromInput}'`)
+                  .then (theCityData => {
+                    response.send(theCityData.rows[0]);
+                  })
+              })
+          })
+      }
     })
     .catch(error => {
       console.log(error);
@@ -66,7 +90,6 @@ function weatherInfo(request, response){
 app.get('/trails', trailInfo);
 
 function trailInfo(request, response){
-  console.log('trailInfo');
   const latData = request.query.latitude;
   const lonData = request.query.longitude;
   const trailURL = `https://www.hikingproject.com/data/get-trails?lat=${latData}&lon=${lonData}&maxDistance=10&key=${TRAIL_API_KEY}`
@@ -74,7 +97,6 @@ function trailInfo(request, response){
   superagent.get(trailURL)
     .then(resultData => {
       const arrayFromBody = resultData.body.trails;
-      console.log(arrayFromBody);
       response.send(arrayFromBody.map(objInArray => new Trail(objInArray)));
     })
     .catch(error => {

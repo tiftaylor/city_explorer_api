@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
 **Author**: Tif Taylor  
-**Version**: 2.5.0  
+**Version**: 3.2.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -19,13 +19,14 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
-08-19-2020 3:05pm - Setup and Create Database
-08-18-2020 5:01pm - Created Trails constructor and get API
-08-18-2020 3:35pm - Refactored get weather with API call
-08-18-2020 3:05pm - Refactored get location with API call
-08-18-2020 2:30pm - Refactored the loop to .map() for weather
-08-17-2020 6:12pm - Deployed Location, Weather, and Error handling for "lynwood" in the app
-08-17-2020 4:05pm - GitHub Repo Established 
+08-19-2020 5:40pm - Code in JS to check DB    
+08-19-2020 3:05pm - Setup and Create Database  
+08-18-2020 5:01pm - Created Trails constructor and get API  
+08-18-2020 3:35pm - Refactored get weather with API call  
+08-18-2020 3:05pm - Refactored get location with API call  
+08-18-2020 2:30pm - Refactored the loop to .map() for weather  
+08-17-2020 6:12pm - Deployed Location, Weather, and Error handling for "lynwood" in the app  
+08-17-2020 4:05pm - GitHub Repo Established   
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -78,3 +79,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Estimated time to complete: 1 hour           
 >Start time: 2:00 PM | End time: 3:05 PM            
 >Actual time needed to complete: 1 hour 5 minutes  
+
+>Number and Name of Feature: #2 Lab 8 | Code to check DB         
+>Estimated time to complete: 1 hour               
+>Start time: 3:10 PM | End time: 5:40 PM                
+>Actual time needed to complete: 2 hours 30 minutes  
