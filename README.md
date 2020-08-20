@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
 **Author**: Tif Taylor  
-**Version**: 3.2.0  
+**Version**: 3.3.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -19,6 +19,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
+08-19-2020 6:00pm - Deploy Database to Heroku    
 08-19-2020 5:40pm - Code in JS to check DB    
 08-19-2020 3:05pm - Setup and Create Database  
 08-18-2020 5:01pm - Created Trails constructor and get API  
@@ -84,3 +85,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Estimated time to complete: 1 hour               
 >Start time: 3:10 PM | End time: 5:40 PM                
 >Actual time needed to complete: 2 hours 30 minutes  
+
+>Number and Name of Feature: #3 Lab 8 | Deploy DB to Heroku               
+>Estimated time to complete: 15 minutes                    
+>Start time: 5:45 PM | End time: 6:00 PM                      
+>Actual time needed to complete: 15 minutes       
