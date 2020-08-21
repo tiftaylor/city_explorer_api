@@ -122,7 +122,8 @@ function moviesInfo(request, response){
 function yelpInfo(request, response){
   const latData = request.query.latitude;
   const lonData = request.query.longitude;
-  const yelpURL = `https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=${latData}&longitude=${lonData}`
+  const page = parseInt(request.query.page, 10) - 1;
+  const yelpURL = `https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=${latData}&longitude=${lonData}&limit=5&offset=${page * 5}`
 
   superagent.get(yelpURL)
     .set('Authorization', `Bearer ${YELP_API_KEY}`)
