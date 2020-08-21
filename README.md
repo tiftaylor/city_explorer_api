@@ -1,7 +1,7 @@
 # City Explorer Mini | Lab 6 - 9 | Code Fellows
 
 **Author**: Tif Taylor  
-**Version**: 4.2.0  
+**Version**: 4.3.0  
 **Heroku URL**: [https://cf-ttaylor-city-explorer.herokuapp.com/](https://cf-ttaylor-city-explorer.herokuapp.com/)
 
 
@@ -21,6 +21,7 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 
 
 ## Change Log
+08-20-2020 5:30pm - Creating Pagination for Yelp API Data    
 08-20-2020 5:00pm - Created render capability for Yelp API call      
 08-20-2020 4:30pm - Partial refactor to server.js + Added Movies API/Constructor    
 08-19-2020 6:00pm - Deploy Database to Heroku    
@@ -104,3 +105,8 @@ For Code Fellows 301 Week 2, we are working on creating individual back-end appl
 >Estimated time to complete: 1 hour                        
 >Start time: 4:45 PM | End time: 5:00 PM                          
 >Actual time needed to complete: 15 minutes  
+
+>Number and Name of Feature: #3 Lab 9 | Yelp API Pagination Feature                 
+>Estimated time to complete: 1 hour                            
+>Start time: 5:00 PM | End time: 5:30 PM                               
+>Actual time needed to complete: 30 minutes        
