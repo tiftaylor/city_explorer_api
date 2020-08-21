@@ -12,11 +12,13 @@ require('dotenv').config();
 // =================== Global Variables ===================== //
 const PORT = process.env.PORT || 3001;
 const app = express();
+const DATABASE_URL = process.env.DATABASE_URL;
+
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const TRAIL_API_KEY = process.env.TRAIL_API_KEY;
 const MOVIE_API_KEY = process.env.MOVIE_API_KEY;
-const DATABASE_URL = process.env.DATABASE_URL;
+const YELP_API_KEY = process.env.YELP_API_KEY;
 
 
 // ================= Express Configs ====================//
@@ -30,6 +32,7 @@ app.get('/location', getLocation);
 app.get('/weather', weatherInfo);
 app.get('/trails', trailInfo);
 app.get('/movies', moviesInfo);
+app.get('/yelp', yelpInfo);
 
 
 // ========================== Route Handlers ============================ //
@@ -101,7 +104,6 @@ function trailInfo(request, response){
 
 
 function moviesInfo(request, response){
-  
   const query = request.query.search_query;
   const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
 
@@ -117,6 +119,23 @@ function moviesInfo(request, response){
 };
 
 
+function yelpInfo(request, response){
+  const latData = request.query.latitude;
+  const lonData = request.query.longitude;
+  const yelpURL = `https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=${latData}&longitude=${lonData}`
+
+  superagent.get(yelpURL)
+    .set('Authorization', `Bearer ${YELP_API_KEY}`)
+    .then(resultData => {
+      const resultArray = resultData.body.businesses
+      response.send(resultArray.map(objInArray => new Business(objInArray)));
+    })
+    .catch(error => {
+      console.log(error);
+      response.status(500).send(error.message);
+    });
+};
+
 // =================== Misc. Functions ===================== //
 function Location(jsonObject, query) {
   this.search_query = query;
@@ -126,13 +145,13 @@ function Location(jsonObject, query) {
 }
 
 
-function Weather(jsonObj){
+function Weather(jsonObj) {
   this.forecast = jsonObj.weather.description;
   this.time = jsonObj.valid_date;
 }
 
 
-function Trail(jsonObj){
+function Trail(jsonObj) {
   this.name = jsonObj.name;
   this.location = jsonObj.location;
   this.length = jsonObj.length;
@@ -157,10 +176,17 @@ function Movie(obj) {
 }
 
 
+function Business(obj) {
+  this.name = obj.name; 
+  this.image_url = obj.image_url;  
+  this.price = obj.price; 
+  this.rating = obj.rating; 
+  this.url = obj.url;  
+}
+
+
 // =================== Start Server ===================== //
 client.connect()
   .then( () => {
     app.listen(PORT, () => console.log('Ay! You connected!'));
   });
-
-;
